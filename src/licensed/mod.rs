@@ -299,7 +299,13 @@ impl LicensedState {
 
         // get path
         let mut hasher = Sha256::new();
-        hasher.update(format!("{}:{}", license_key, Local::now().date_naive(),));
+        let now = Local::now();
+        hasher.update(format!(
+            "{}:{:04}-{:02}",
+            license_key,
+            now.year(),
+            now.month()
+        ));
         let path = format!("{:x}", hasher.finalize());
 
         // dir path
