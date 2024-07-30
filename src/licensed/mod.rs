@@ -7,7 +7,7 @@ use crate::{
     machine::Machine,
     Result,
 };
-use chrono::Local;
+use chrono::{Datelike, Local};
 use license::*;
 use reqwest::{Method, StatusCode};
 use serde::Serialize;
