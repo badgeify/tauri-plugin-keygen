@@ -65,7 +65,7 @@ impl Builder {
     }
 
     pub fn cache_lifetime(mut self, cache_lifetime: i64) -> Self {
-        self.cache_lifetime = cache_lifetime.clamp(60, 43200);
+        self.cache_lifetime = cache_lifetime.clamp(60, 365 * 24 * 60);
         self
     }
 
