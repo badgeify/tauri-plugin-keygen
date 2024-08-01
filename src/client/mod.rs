@@ -189,15 +189,15 @@ impl KeygenClient {
         }
 
         // get duration since response date
-        let date_time = DateTime::parse_from_rfc2822(&sig.date())
-            .map_err(|_| Error::BadResponse("Invalid signature date".into()))?;
+        // let date_time = DateTime::parse_from_rfc2822(&sig.date())
+        //     .map_err(|_| Error::BadResponse("Invalid signature date".into()))?;
 
-        let minutes_since_response = Utc::now().signed_duration_since(date_time).num_minutes();
+        // let minutes_since_response = Utc::now().signed_duration_since(date_time).num_minutes();
 
         // check request date
-        if self.max_clock_drift >= 0 && minutes_since_response > self.max_clock_drift {
-            return Err(Error::BadResponse("Request date too old".into()));
-        }
+        // if self.max_clock_drift >= 0 && minutes_since_response > self.max_clock_drift {
+        //     return Err(Error::BadResponse("Request date too old".into()));
+        // }
 
         // verify signature
         match self.verify_signature(sig.data(), sig.to_string()) {
